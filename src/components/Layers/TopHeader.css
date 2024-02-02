@@ -1,0 +1,25 @@
+/* styles.css */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(4, 4, 4, 0.9);
+}
+
+.container-fluid {
+  margin: 0;
+}
+
+.profile-logo {
+  width: 30px; /* Adjust as needed */
+  height: auto;
+  margin-right: 10px; /* Adjust as needed */
+}
+.logo-container{
+  display: flex;
+  align-items: center;
+
+}
+
+/* Add any additional styles for List 4 */
