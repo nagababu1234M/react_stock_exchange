@@ -10,9 +10,11 @@ function App() {
   };
   return (
     <Router>
+      {/* <div className="container-fluid"> */}
         <TopHeader />
         <div className="row" style={myStyle}>
         <Content />
+        {/* <div className="row mt-3"> */}
           <Routes>
             <Route index element={<MainContent />} />
           </Routes>

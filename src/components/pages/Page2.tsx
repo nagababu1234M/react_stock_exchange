@@ -24,6 +24,7 @@ const Page2 = () => {
         productPrice: '',
         productDescription: '',
       });
+      alert("Success!");
     }catch{
       console.log('error');
     }

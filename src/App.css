@@ -23,7 +23,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.body {
+  background-color: #1c87c9; /* This is a blue color, you can replace it with your preferred blue shade */
+}
 .App-link {
   color: #61dafb;
 }
