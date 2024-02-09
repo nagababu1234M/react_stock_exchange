@@ -42,12 +42,13 @@ const Content = () => {
               <Route path="/page1" element={<Page1 data={data} />} />
               <Route path="/page2" element={<Page2 />} />
               <Route path="/page3" element={<Page3 />} />
-              <Route path="/timer" element={ <Provider store={store}>
-      <div>
-        <h1>Redux Example</h1>
-        <Counter />
-      </div>
-    </Provider>} />
+              <Route path="/timer" element={ 
+              <Provider store={store}>
+              <div>
+                  <h1>Redux Example</h1>
+                  <Counter />
+              </div>
+            </Provider>} />
             </Routes>
           )}
         </div>

@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../common/actions.js';
 
 const Counter = ({ count, increment, decrement }) => {
-  console.log(count)
-  console.log(increment)
-  console.log(decrement)
   return (
     <div>
       <h1>Count: {count}</h1>
