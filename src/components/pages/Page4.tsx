@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addtodo } from '../common/actions';
+import { addtodo,removetodo } from '../common/actions';
 import { useState } from 'react';
 
-const Page4 = ({ data, addtodo }) => {
+const Page4 = ({ data, addtodo,removetodo }) => {
   const [text, setText] = useState('');
 
   const handleSubmit = (e) => {
@@ -11,6 +11,10 @@ const Page4 = ({ data, addtodo }) => {
     addtodo(text);
     setText('');
   };
+  const handleSubmitForEmove= (e) => {
+    e.preventDefault();
+    removetodo('');
+  }
 
   return (
     <div>
@@ -20,6 +24,7 @@ const Page4 = ({ data, addtodo }) => {
       </div>
       <div>{data}</div>
       <button onClick={handleSubmit}>Save</button>
+      <button onClick={handleSubmitForEmove}>remove</button>
     </div>
   );
 };
@@ -30,6 +35,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   addtodo,
+  removetodo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page4);

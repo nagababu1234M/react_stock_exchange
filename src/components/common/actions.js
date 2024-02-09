@@ -11,3 +11,7 @@ export const increment = () => ({
     payload: text,
 
   });
+  export const removetodo = () => ({
+    type: 'REMOVETODO',
+
+  });

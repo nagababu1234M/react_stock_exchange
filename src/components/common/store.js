@@ -14,6 +14,8 @@ const counterReducer = (state = initialState, action) => {
       return { count: state.count - 1 };
     case 'ADDTODO':
       return { data: action.payload + state.data};
+      case 'REMOVETODO':
+        return { data: ""};
     default:
       return state;
   }
