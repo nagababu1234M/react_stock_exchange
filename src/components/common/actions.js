@@ -6,4 +6,8 @@ export const increment = () => ({
   export const decrement = () => ({
     type: 'DECREMENT',
   });
-  
+  export const addtodo = (text) => ({
+    type: 'ADDTODO',
+    payload: text,
+
+  });

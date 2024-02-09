@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 
 const initialState = {
   count: 0,
+  data:""
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -11,6 +12,8 @@ const counterReducer = (state = initialState, action) => {
       return { count: state.count + 1 };
     case 'DECREMENT':
       return { count: state.count - 1 };
+    case 'ADDTODO':
+      return { data: action.payload + state.data};
     default:
       return state;
   }

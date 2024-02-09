@@ -9,6 +9,7 @@ import TableData from '../common/TableData.ts';
 import Counter from '../pages/Counter.js';
 import store from '../common/store';
 import { Provider } from 'react-redux';
+import Page4 from '../pages/Page4.tsx';
 
 
 
@@ -42,6 +43,14 @@ const Content = () => {
               <Route path="/page1" element={<Page1 data={data} />} />
               <Route path="/page2" element={<Page2 />} />
               <Route path="/page3" element={<Page3 />} />
+              <Route path="/page4" element={
+              <Provider store={store}>
+              <div>
+                  <h1>Redux Example</h1>
+                  <Page4 />
+              </div>
+            </Provider>}/>
+
               <Route path="/timer" element={ 
               <Provider store={store}>
               <div>
