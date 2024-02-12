@@ -20,7 +20,10 @@ const initialState: RootState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     // ... rest of the cases
-
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
     case 'START_STOPWATCH':
       return {
         ...state,

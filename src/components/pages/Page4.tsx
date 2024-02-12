@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const Page4 = ({ data, addtodo,removetodo }) => {
   const [text, setText] = useState('');
-
   const handleSubmit = (e) => {
     e.preventDefault();
     addtodo(text);
@@ -15,6 +14,7 @@ const Page4 = ({ data, addtodo,removetodo }) => {
     e.preventDefault();
     removetodo('');
   }
+
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center h-100">
@@ -27,9 +27,13 @@ const Page4 = ({ data, addtodo,removetodo }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
 const mapDispatchToProps = {
   addtodo,
   removetodo
 };
 
-export default connect('', mapDispatchToProps)(Page4);
+export default connect(mapStateToProps, mapDispatchToProps)(Page4);
