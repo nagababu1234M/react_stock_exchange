@@ -15,12 +15,10 @@ const Page4 = ({ data, addtodo,removetodo }) => {
     e.preventDefault();
     removetodo('');
   }
-
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center h-100">
         <input type="text" value={text} onChange={(e) => setText(e.target.value)}></input>
-        <p>This is some content in the middle.</p>
       </div>
       <div>{data}</div>
       <button onClick={handleSubmit}>Save</button>
@@ -29,13 +27,9 @@ const Page4 = ({ data, addtodo,removetodo }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  data: state.data,
-});
-
 const mapDispatchToProps = {
   addtodo,
   removetodo
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page4);
+export default connect('', mapDispatchToProps)(Page4);

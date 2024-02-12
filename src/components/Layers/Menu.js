@@ -25,6 +25,9 @@ const Menu = () => {
         <Link to="/timer" className="list-group-item list-group-item-action">
         Timer
         </Link>
+        <Link to="/stopWatch" className="list-group-item list-group-item-action">
+        Stop_Watch
+        </Link>
         
       </div>
     </div>
