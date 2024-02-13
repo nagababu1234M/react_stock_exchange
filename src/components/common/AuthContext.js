@@ -18,6 +18,10 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const updateToken = (newToken) => {
+    setToken(newToken);
+  };
+
   useEffect(() => {
     // Perform token verification logic here (e.g., check if the token is valid)
     // If the token is not valid, call logout() to clear the token and user
@@ -32,12 +36,18 @@ export const AuthProvider = ({ children }) => {
   }, [token, user]);
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout, loading }}>
+    <AuthContext.Provider value={{ token, user, login, logout, updateToken, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
+  return context;
 };

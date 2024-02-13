@@ -5,7 +5,7 @@ import TableData from '../common/TableData.ts';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login, token } = useAuth();
+  const {login,updateToken } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,11 +22,11 @@ const Login = () => {
       const response = await TableData(apiUrl, 'POST', data);
 
       // Assuming the response contains token and user data
-      const { token: authToken, user } = response;
-
+      const { token, firstName } = response;
+      const user = firstName;
       // Log the user in and set the token in your authentication context
-      login(user.username, user.password);
-      token(authToken);
+      login(user);
+      updateToken(token);
     } catch (error) {
       console.error('Error:', error);
       // Handle error (e.g., display an error message)

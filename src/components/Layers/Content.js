@@ -23,7 +23,7 @@ const Content = ({ element, ...props }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   // const [isLoggedInUser, setLoggedInUser] = useState(null);
-  const { loggedInUser } = useAuth();
+  const { updateToken } = useAuth();
 
   
   
@@ -45,7 +45,7 @@ const Content = ({ element, ...props }) => {
     return(
         <div className="col-md-6">
           {
-          loggedInUser ? (
+          updateToken ? (
           loading ? (
             <div>Loading...</div>
           ) : (
