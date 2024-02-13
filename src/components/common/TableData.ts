@@ -1,5 +1,4 @@
-import { TableDataInput } from "../Types";
-const TableData = async (postUrl,method, data)  => {
+export const TableData = async (postUrl,method, data)  => {
   const options={
     method: method,
     headers: {
@@ -16,4 +15,19 @@ const TableData = async (postUrl,method, data)  => {
     throw error;
   }
 };
-export default TableData
+export const checkToken = async (getUrl,method, data)  => {
+  const options={
+    method: method,
+    headers: {
+      'Authorization': 'Bearer '+data, 
+    },
+  }
+  try {
+    const response = await fetch(getUrl,options);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};

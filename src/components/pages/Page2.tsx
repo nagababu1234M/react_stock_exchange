@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import TableData  from '../common/TableData.ts';
+import {TableData } from '../common/TableData.ts';
 const postUrl="https://dummyjson.com/products/add";
 const Page2 = () => {
   const [formData,setValue]= useState({
@@ -18,13 +18,12 @@ const Page2 = () => {
   const submitForm = async (e)=>{
     e.preventDefault();
     try{
-      await TableData( { postUrl:postUrl,method: "POST", data: formData } );
+      await TableData(postUrl, "POST",formData);
       setValue({
         productName: '',
         productPrice: '',
         productDescription: '',
       });
-      alert("Success!");
     }catch{
       console.log('error');
     }

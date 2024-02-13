@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-
       {/* <div className="container-fluid"> */}
         <TopHeader />
         <div className="row" style={myStyle}>

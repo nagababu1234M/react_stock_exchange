@@ -1,6 +1,6 @@
 import React from 'react';
 const Page1 = (props) => {
-  const {products}=props.data
+  const {products}=props.data;
   const column = Object.keys(products[0]);
   const ThData =()=>{
     return column.map((data)=>{

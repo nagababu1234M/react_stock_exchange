@@ -5,7 +5,7 @@ import Page2 from '../pages/Page2.tsx';
 import Page3 from '../pages/Page3';
 import HomePage from '../pages/HomePage';
 import  {  useState , useEffect, useContext} from 'react';
-import TableData from '../common/TableData.ts';
+import {TableData} from '../common/TableData.ts';
 import Counter from '../pages/Counter.js';
 import store from '../common/store.ts';
 import { Provider } from 'react-redux';
@@ -14,29 +14,24 @@ import Stopwatch from '../pages/stopWatch.tsx';
 import Login from '../pages/Login.tsx';
 import {useAuth}  from '../common/AuthContext.js';
 
-
-
-
 const apiUrl='https://dummyjson.com/products';
-const Content = ({ element, ...props }) => {
-  console.log({...props, ...element})
+const Content = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   // const [isLoggedInUser, setLoggedInUser] = useState(null);
-  const { updateToken } = useAuth();
-
-  
-  
+  const { token} = useAuth();
+  console.log(token)
   useEffect(() => {
-    const fetchDataFromApi = async () => {
+
+    const fetchDataFromApi = async (e) => {
       try {
-        const result = await TableData( { postUrl:apiUrl,method: "GET", data: "" } );
+        const bodyData="";
+        const result = await TableData(apiUrl, "GET", bodyData);
         setData(result);
       } catch (error) {
-        // Handle error (e.g., display an error message)
         console.error('Error in App component:', error);
       } finally {
-          setLoading(false); // Set loading to false when data fetching is complete 
+        setLoading(false);
       }
     };
     fetchDataFromApi();
@@ -45,7 +40,7 @@ const Content = ({ element, ...props }) => {
     return(
         <div className="col-md-6">
           {
-          updateToken ? (
+          token ? (
           loading ? (
             <div>Loading...</div>
           ) : (
@@ -81,8 +76,7 @@ const Content = ({ element, ...props }) => {
           : (<Login  />)
       }
         </div>
-      );
-            
-};
+      );    
+  };
 
 export default Content;

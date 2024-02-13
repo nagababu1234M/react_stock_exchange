@@ -1,6 +1,6 @@
 // AuthContext.js
 import React, { createContext, useContext, useEffect, useState } from 'react';
-
+import {checkToken} from '../common/TableData.ts';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -23,20 +23,25 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    const fetchDataFromApi = async (e) => {
+    const apiUrl='https://dummyjson.com/auth/me';
     // Perform token verification logic here (e.g., check if the token is valid)
     // If the token is not valid, call logout() to clear the token and user
     // Note: This is a simplified example, and you may need to enhance the token verification logic
-    if (token && user) {
+   const verifyToken = await checkToken(apiUrl,'GET',token)
+    if (verifyToken) {
       // Assume the token is valid
       setLoading(false);
     } else {
       logout();
       setLoading(false);
     }
+  }
+fetchDataFromApi()
   }, [token, user]);
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout, updateToken, loading }}>
+    <AuthContext.Provider value = {{ token, user, login, logout, updateToken, loading }}>
       {children}
     </AuthContext.Provider>
   );
