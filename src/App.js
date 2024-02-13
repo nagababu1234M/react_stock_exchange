@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopHeader from './components/Layers/TopHeader';
 import MainContent from './components/Layers/MainContent';
 import Content from './components/Layers/Content';
+import  {AuthProvider} from './components/common/AuthContext';
 
 function App() {
   const myStyle = {
@@ -10,6 +11,8 @@ function App() {
   };
   return (
     <Router>
+      <AuthProvider>
+
       {/* <div className="container-fluid"> */}
         <TopHeader />
         <div className="row" style={myStyle}>
@@ -19,7 +22,9 @@ function App() {
             <Route index element={<MainContent />} />
           </Routes>
           </div>
+        </AuthProvider>
     </Router>
   );
 }
+
 export default App;

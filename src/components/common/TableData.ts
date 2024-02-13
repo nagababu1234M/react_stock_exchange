@@ -1,6 +1,5 @@
 import { TableDataInput } from "../Types";
-const TableData = async ({postUrl,method, data}:TableDataInput)  => {
-  console.log(data)
+const TableData = async (postUrl,method, data)  => {
   const options={
     method: method,
     headers: {

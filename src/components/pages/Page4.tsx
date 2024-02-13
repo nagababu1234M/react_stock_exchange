@@ -28,7 +28,7 @@ const Page4 = ({ data, addtodo,removetodo }) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.data,
+  data: state.text
 });
 
 const mapDispatchToProps = {

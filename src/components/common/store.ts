@@ -7,6 +7,7 @@ export type RootState = {
   count: number;
   data: string;
   startTime: Date | null; // Define startTime as Date or null
+  text: string[];
 };
 
 const initialState: RootState = {
@@ -15,11 +16,22 @@ const initialState: RootState = {
   isRunning: false,
   recordedTimes: [],
   startTime: null, // Initialize startTime to null
+  text:[]
 };
 
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     // ... rest of the cases
+    case  'ADDTODO':
+      return {
+     ...state,        
+     text: [action.payload,...state.text]
+    };
+     case 'REMOVETODO':
+      return {
+     ...state,
+        text: state.text.filter(todo => todo!== action.payload)
+      };
     case 'INCREMENT':
       return { count: state.count + 1 };
     case 'DECREMENT':

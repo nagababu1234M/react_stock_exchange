@@ -4,20 +4,28 @@ import Page1 from '../pages/Page1';
 import Page2 from '../pages/Page2.tsx';
 import Page3 from '../pages/Page3';
 import HomePage from '../pages/HomePage';
-import  {  useState , useEffect} from 'react';
+import  {  useState , useEffect, useContext} from 'react';
 import TableData from '../common/TableData.ts';
 import Counter from '../pages/Counter.js';
 import store from '../common/store.ts';
 import { Provider } from 'react-redux';
 import Page4 from '../pages/Page4.tsx';
 import Stopwatch from '../pages/stopWatch.tsx';
+import Login from '../pages/Login.tsx';
+import {useAuth}  from '../common/AuthContext.js';
+
 
 
 
 const apiUrl='https://dummyjson.com/products';
-const Content = () => {
+const Content = ({ element, ...props }) => {
+  console.log({...props, ...element})
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [isLoggedInUser, setLoggedInUser] = useState(null);
+  const { loggedInUser } = useAuth();
+
+  
   
   useEffect(() => {
     const fetchDataFromApi = async () => {
@@ -33,9 +41,11 @@ const Content = () => {
     };
     fetchDataFromApi();
   }, []);
+
     return(
         <div className="col-md-6">
           {
+          loggedInUser ? (
           loading ? (
             <div>Loading...</div>
           ) : (
@@ -66,9 +76,13 @@ const Content = () => {
               </div>
             </Provider>} />
             </Routes>
-          )}
+          )
+        )
+          : (<Login  />)
+      }
         </div>
       );
+            
 };
 
 export default Content;
